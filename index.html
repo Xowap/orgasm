@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Optimally Running Group And Subject Matching</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.0/superhero/bootstrap.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body role="document" ng-app="orgasm">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Optimally Running Group And Subject Matching</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container" ng-controller="OrgasmControl">
+    <div class="jumbotron">
+        <h1><strong>O</strong>ptimally <strong>R</strong>unning <strong>G</strong>roup <strong>A</strong>nd
+            <strong>S</strong>ubject <strong>M</strong>atching</h1>
+
+        <p>Welcome to this group/subject matching software!</p>
+
+        <p>Please start by indicating the number of groups/subjects you will be having, then fill the preference
+        table as follows: for each group/subject pair, please indicate the preference level that the group indicated
+        (1 for preferred, 2 for second choice, etc). If the group does not wish to work on a given subject, please
+        give a very high value.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <tr>
+                    <td class="form-group">
+                        <label for="matrix-n">Number of groups</label>
+                        <input ng-model="n" id="matrix-n" class="form-control" type="number"/>
+                    </td>
+                    <td class="form-group" ng-repeat="group in groups">
+                        <label for="matrix-group-{{ $index }}">Group {{ $index + 1 }}</label>
+                        <input ng-model="groups[$index]" id="matrix-group-{{ $index }}" class="form-control" type="text"/>
+                    </td>
+                </tr>
+                <tr ng-repeat="prefs in matrix">
+                    <td class="form-group">
+                        <label for="matrix-subject-{{ $index }}">Subject {{ $index + 1}}</label>
+                        <input ng-model="subjects[$index]" id="matrix-subject-{{ $index }}" class="form-control" type="text"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
