@@ -73,7 +73,7 @@
             }
 
             while (newMatrix.length < totalRows) {
-                newMatrix.push(makePaddingArray(totalRows, 0));
+                newMatrix.push(makePaddingArray(totalRows, padValue));
             }
 
             return newMatrix;
@@ -160,7 +160,7 @@
                             && (!self.rowCovered[i])) {
                         self.marked[i][j] = 1;
                         self.colCovered[j] = true;
-                        self.colCovered[i] = true;
+                        self.rowCovered[i] = true;
                     }
                 }
             }
