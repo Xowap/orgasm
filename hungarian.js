@@ -157,7 +157,7 @@
                 for (j = 0; j < n; j += 1) {
                     if (self.c[i][j] === 0
                             && (!self.colCovered[j])
-                            && (!self.rowCovered[j])) {
+                            && (!self.rowCovered[i])) {
                         self.marked[i][j] = 1;
                         self.colCovered[j] = true;
                         self.colCovered[i] = true;
@@ -273,7 +273,9 @@
                 for (j = 0; j < self.n; j += 1) {
                     if (self.rowCovered[i]) {
                         self.c[i][j] += minval;
-                    } else {
+                    }
+
+                    if (!self.colCovered[j]) {
                         self.c[i][j] -= minval;
                     }
                 }
